@@ -1,46 +1,12 @@
 ﻿// See https://aka.ms/new-console-template for more information
+using SnakeandLadder;
+
 Console.WriteLine("Welcome to Snake and Ladder!");
 
-int playerposition = 0;
-Random random = new Random();
-int isWin = 100;
-int count = 0;
-while (playerposition <= isWin)
-{
-    int rollDie = random.Next(1, 7);
-    count++;
-    Console.WriteLine(rollDie);
-    int options = random.Next(0, 3);
-    switch (options)
-    {
-        case 0:
-            Console.WriteLine("NO_PLAY");
-            playerposition = 0;
-            break;
-        case 1:
-            Console.WriteLine("LADDER");
-            playerposition += rollDie;
-            break;
-        case 2:
-            Console.WriteLine("SNAKE");
-            playerposition -= rollDie;
-            if (playerposition < 0)
-            {
-                playerposition = 0;
-            }
-            break;
-        default:
-            break;
-    }
-    if (playerposition > isWin)
-    {
-        playerposition -= rollDie;
-    }
-    Console.WriteLine(playerposition);
-}
-Console.WriteLine(playerposition);
-if (playerposition == isWin)
-{
-    Console.WriteLine("You Won!!");
-    Console.WriteLine("Number of times the dice was rolled to win the game", count);
-}
+SnakeAndLadder player1 = new SnakeAndLadder();
+SnakeAndLadder player2 = new SnakeAndLadder();
+Console.WriteLine("Player 1: ");
+player1.Describe();
+Console.WriteLine("Player 2: ");
+player2.Describe();
+player1.PlayTillEnd(player2);
